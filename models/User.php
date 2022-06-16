@@ -120,7 +120,14 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
         return $this->password === $password;
     }
 
-
+    public static function isAdmin()
+    {
+        if (Yii::$app->user->identity->admin == 1) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
 
 
