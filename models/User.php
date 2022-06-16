@@ -52,8 +52,8 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
             'surname' => 'Surname',
             'patronymic' => 'Patronymic',
             'email' => 'Email',
-            'login' => 'Login',
-            'password' => 'Password',
+            'login' => 'Логин',
+            'password' => 'Пароль',
             'admin' => 'Admin',
         ];
     }

@@ -78,4 +78,21 @@ class LoginForm extends Model
 
         return $this->_user;
     }
+
+    public function attributeLabels()
+    {
+        return [
+            'id' => 'ID',
+            'name' => 'Имя',
+            'surname' => 'Фамилия',
+            'patronymic' => 'Отчество',
+            'email' => 'Email',
+            'login' => 'Логин',
+            'password' => 'Пароль',
+            'admin' => 'Админ?',
+            'rulesite' => 'Согласен с правилами сервиса',
+            'repassword' => 'Подтверждение пароля',
+            'username' => 'Логин',
+        ];
+    }
 }
