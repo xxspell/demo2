@@ -1,13 +1,13 @@
 <?php
 
-namespace app\modules\admin\models;
+namespace app\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\modules\admin\models\Product;
+use app\models\Product;
 
 /**
- * ProductSearch represents the model behind the search form of `app\modules\admin\models\Product`.
+ * ProductSearch represents the model behind the search form of `app\models\Product`.
  */
 class ProductSearch extends Product
 {
@@ -17,8 +17,8 @@ class ProductSearch extends Product
     public function rules()
     {
         return [
-            [['id', 'stats'], 'integer'],
-            [['name', 'description'], 'safe'],
+            [['id', 'category_id', 'stats'], 'integer'],
+            [['name', 'description', 'image'], 'safe'],
             [['price'], 'number'],
         ];
     }
@@ -70,17 +70,5 @@ class ProductSearch extends Product
             ->andFilterWhere(['like', 'image', $this->image]);
 
         return $dataProvider;
-    }
-    public function attributeLabels()
-    {
-        return [
-            'id' => 'ID',
-            'category_id' => 'Категория',
-            'name' => 'Название',
-            'description' => 'Описание',
-            'price' => 'Цена',
-            'image' => 'Изображение',
-            'stats' => 'Кол-во просмотров',
-        ];
     }
 }

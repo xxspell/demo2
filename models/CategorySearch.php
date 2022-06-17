@@ -1,15 +1,15 @@
 <?php
 
-namespace app\modules\admin\models;
+namespace app\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\modules\admin\models\Product;
+use app\models\Category;
 
 /**
- * ProductSearch represents the model behind the search form of `app\modules\admin\models\Product`.
+ * CategorySearch represents the model behind the search form of `app\models\Category`.
  */
-class ProductSearch extends Product
+class CategorySearch extends Category
 {
     /**
      * {@inheritdoc}
@@ -17,9 +17,8 @@ class ProductSearch extends Product
     public function rules()
     {
         return [
-            [['id', 'stats'], 'integer'],
-            [['name', 'description'], 'safe'],
-            [['price'], 'number'],
+            [['id'], 'integer'],
+            [['name', 'description', 'image'], 'safe'],
         ];
     }
 
@@ -41,7 +40,7 @@ class ProductSearch extends Product
      */
     public function search($params)
     {
-        $query = Product::find();
+        $query = Category::find();
 
         // add conditions that should always apply here
 
@@ -60,9 +59,6 @@ class ProductSearch extends Product
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'category_id' => $this->category_id,
-            'price' => $this->price,
-            'stats' => $this->stats,
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name])
@@ -70,17 +66,5 @@ class ProductSearch extends Product
             ->andFilterWhere(['like', 'image', $this->image]);
 
         return $dataProvider;
-    }
-    public function attributeLabels()
-    {
-        return [
-            'id' => 'ID',
-            'category_id' => 'Категория',
-            'name' => 'Название',
-            'description' => 'Описание',
-            'price' => 'Цена',
-            'image' => 'Изображение',
-            'stats' => 'Кол-во просмотров',
-        ];
     }
 }
