@@ -30,8 +30,8 @@ class Category extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'description', 'image'], 'required'],
-            [['name', 'description', 'image'], 'string', 'max' => 255],
+            [['name', 'description'], 'required'],
+            [['name', 'description'], 'string', 'max' => 255],
         ];
     }
 
@@ -42,9 +42,9 @@ class Category extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
-            'description' => 'Description',
-            'image' => 'Image',
+            'name' => 'Название',
+            'description' => 'Описание',
+            'image' => 'Изображение',
         ];
     }
 
