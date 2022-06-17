@@ -92,3 +92,7 @@ a.desc:after {
     width: 200px;
     height: auto;
 }
+
+body {
+    font-family: EkMukta, serif ;
+}
