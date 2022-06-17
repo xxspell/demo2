@@ -2,6 +2,7 @@
 
 namespace app\modules\admin\controllers;
 
+use app\models\User;
 use app\modules\admin\models\Category;
 use app\modules\admin\models\CategorySearch;
 use yii\web\Controller;
@@ -38,14 +39,21 @@ class CategoryController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new CategorySearch();
-        $dataProvider = $searchModel->search($this->request->queryParams);
+        if (User::isAdmin()) {
 
-        return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-        ]);
+            $searchModel = new CategorySearch();
+            $dataProvider = $searchModel->search($this->request->queryParams);
+
+            return $this->render('index', [
+                'searchModel' => $searchModel,
+                'dataProvider' => $dataProvider,
+            ]);
+        } else {
+            return $this->goHome();
+        }
     }
+
+
 
     /**
      * Displays a single Category model.
