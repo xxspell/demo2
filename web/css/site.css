@@ -87,3 +87,8 @@ a.desc:after {
     width: 200px;
     height: auto;
 }
+
+.grid-view > table > tbody > tr > td:nth-child(6) > img {
+    width: 200px;
+    height: auto;
+}

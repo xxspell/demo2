@@ -33,7 +33,7 @@ class Product extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['category_id', 'name', 'description', 'price', 'image', 'stats'], 'required'],
+            [['category_id', 'name', 'description', 'price'], 'required'],
             [['category_id', 'stats'], 'integer'],
             [['price'], 'number'],
             [['name', 'description', 'image'], 'string', 'max' => 255],
@@ -48,12 +48,12 @@ class Product extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'category_id' => 'Category ID',
-            'name' => 'Name',
-            'description' => 'Description',
-            'price' => 'Price',
-            'image' => 'Image',
-            'stats' => 'Stats',
+            'category_id' => 'Категория',
+            'name' => 'Название',
+            'description' => 'Описание',
+            'price' => 'Цена',
+            'image' => 'Изображение',
+            'stats' => 'Кол-во просмотров',
         ];
     }
 
@@ -66,4 +66,6 @@ class Product extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Category::className(), ['id' => 'category_id']);
     }
+
+
 }
